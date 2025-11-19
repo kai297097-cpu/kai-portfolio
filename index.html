@@ -255,7 +255,13 @@
       <section id="kontaktinfo" class="section contact" aria-labelledby="contact-title">
         <div class="container">
           <h2 id="contact-title">Kontaktinformationen</h2>
-          <form class="contact-form" method="post" action="" aria-describedby="privacy-note">
+          <form class="contact-form" method="POST" action="https://formsubmit.co/kai297097@gmail.com" aria-describedby="privacy-note">
+            <!-- Formsubmit Configuration -->
+            <input type="hidden" name="_next" value="https://kai297097-cpu.github.io/kai-portfolio/danke.html">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_subject" value="Neue Anfrage über Portfolioseite">
+            
             <div class="form-grid">
               <div class="form-field">
                 <label for="name">Name</label>
@@ -270,8 +276,8 @@
                 <textarea id="message" name="message" rows="5" required></textarea>
               </div>
             </div>
-            <p id="privacy-note" class="note">Es werden keine Daten gespeichert, nur per E‑Mail weitergeleitet. (Aktuell: Demo, kein Versand)</p>
-            <button type="submit" class="btn btn--primary" aria-disabled="true">Senden (Platzhalter)</button>
+            <p id="privacy-note" class="note">Es werden keine Daten gespeichert, nur per E‑Mail weitergeleitet.</p>
+            <button type="submit" class="btn btn--primary">Nachricht senden</button>
           </form>
           <div class="contact-direct">
             <ul class="contact-list">

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow">
+    <title>Danke – Kai Kallenberger</title>
+    <meta name="description" content="Vielen Dank für Ihre Nachricht." />
+    <meta name="color-scheme" content="light" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .thankyou-page {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .thankyou-card {
+        text-align: center;
+        max-width: 600px;
+      }
+      .thankyou-card h1 {
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        margin-bottom: var(--space-6);
+        color: var(--color-earth);
+      }
+      .thankyou-card p {
+        font-size: 1.2rem;
+        margin-bottom: var(--space-8);
+        color: var(--text-muted);
+      }
+      .checkmark {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: var(--color-moss);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto var(--space-6);
+      }
+      .checkmark::after {
+        content: "✓";
+        color: white;
+        font-size: 3rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <div class="brand">
+          <a href="index.html" class="brand-link" aria-label="Startseite">Kai Kallenberger</a>
+        </div>
+        <nav class="site-nav" aria-label="Hauptnavigation">
+          <ul class="nav-list">
+            <li><a href="index.html#highlights">Highlights</a></li>
+            <li><a href="index.html#cases">Case Studies</a></li>
+            <li><a href="index.html#testimonials">Referenzen</a></li>
+            <li><a href="index.html#kontakt" class="btn btn--primary">Kontakt</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1" class="thankyou-page">
+      <div class="container">
+        <div class="thankyou-card">
+          <div class="checkmark"></div>
+          <h1>Vielen Dank für Ihre Nachricht</h1>
+          <p>Ihre Anfrage wurde erfolgreich versendet. Ich melde mich schnellstmöglich bei Ihnen.</p>
+          <a href="index.html" class="btn btn--primary">Zurück zur Startseite</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <small>© <span id="year"></span> Kai Kallenberger</small>
+        <nav aria-label="Fußnavigation">
+          <ul class="footer-nav">
+            <li><a href="impressum.html" class="link">Impressum</a></li>
+            <li><a href="datenschutz.html" class="link">Datenschutz</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
+
