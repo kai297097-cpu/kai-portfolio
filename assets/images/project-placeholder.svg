@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Projektbild Platzhalter">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eeeeee"/>
+      <stop offset="100%" stop-color="#dddddd"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1200" height="800" fill="url(#g)"/>
+  <rect x="40" y="40" width="1120" height="720" fill="none" stroke="#bbbbbb" stroke-width="4" stroke-dasharray="12 10"/>
+  <g fill="#888888" font-family="'Palatino Linotype','Book Antiqua',Palatino,'Libre Baskerville',Georgia,serif" font-size="36" text-anchor="middle">
+    <text x="600" y="410">Projektbild – Platzhalter</text>
+    <text x="600" y="460" font-size="24">Ersetze durch reales Asset unter /assets/images/</text>
+  </g>
+</svg>
+
+

@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <!--
+      Projekt: Portfolio Landingpage – Kai Kallenberger
+      Zweck: One-Page-Struktur zur fokussierten Darstellung von Erfahrung, Werten und nachweisbaren Ergebnissen.
+      Designgrundlagen (aus CorporateID_Branding_Design.md):
+        - Farben: Erde #5A4B41 (Text/Primary), Sand #F5F2ED (Hintergrund), Terracotta #C97B5A (Akzent/CTA), Moos #6E8B61 (Sekundär), Weiß #FFFFFF, Graphit #2C2C2C
+        - Typografie: 'Palatino Linotype' (Serif, ruhig & glaubwürdig) mit definierten Fallbacks
+        - Layout: ruhiger Weißraum, klare Hierarchie, hohe Lesbarkeit, WCAG-AA-Kontraste
+      Architektur:
+        - Semantische Landmarken: header, nav, main, section, footer
+        - Sticky Navigation mit Ankersprüngen (CSS smooth scroll)
+        - Platzhalter-Sektionen: Highlights, Case Studies (inkl. Finkhof), Testimonials, Kontakt
+      DSGVO/Security (Privacy_Security_Design_Principles.md):
+        - Keine Tracker, keine externen Ressourcen, keine personenbezogenen Daten
+        - Späteres Kontaktformular minimalistisch und klar zweckgebunden
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow">
+    <title>Kai Kallenberger – Portfolio</title>
+    <meta name="description" content="Portfolio-Landingpage von Kai Kallenberger: Erfahrungen, Werte, Erfolge (u. a. Shop Usability Award, Finkhof-Case)." />
+    <meta name="color-scheme" content="light" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <div class="brand">
+          <a href="#hero" class="brand-link" aria-label="Startseite">Kai Kallenberger</a>
+        </div>
+        <nav class="site-nav" aria-label="Hauptnavigation">
+          <ul class="nav-list">
+            <li><a href="#highlights">Highlights</a></li>
+            <li><a href="#cases">Case Studies</a></li>
+            <li><a href="#testimonials">Referenzen</a></li>
+            <li><a href="#kontakt" class="btn btn--primary">Kontakt</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section id="hero" class="section hero" aria-labelledby="hero-title">
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <h1 id="hero-title">Kai Kallenberger</h1>
+            <p class="hero-lead">Ich verbinde nachhaltige Werte mit digitalem Fortschritt.</p>
+            <p class="hero-tagline">Strategie, Struktur und Menschlichkeit – damit Digitalisierung wirkt.</p>
+            <div class="cta-row">
+              <a href="#highlights" class="btn btn--primary">Projekte ansehen</a>
+              <a href="#kontakt" class="btn btn--ghost">Kontakt aufnehmen</a>
+              <a href="https://www.linkedin.com/in/kai-kallenberger-652061354/" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+          <figure class="hero-portrait" aria-label="Portrait von Kai Kallenberger">
+            <img src="assets/images/Person/image-person_KK.png" alt="Kai Kallenberger" />
+          </figure>
+        </div>
+      </section>
+
+      <!-- Intro / Einleitung: persönliches Statement und Medien-Platzhalter -->
+      <section id="intro" class="section intro" aria-labelledby="intro-title">
+        <div class="container intro-inner">
+          <header class="intro-header">
+            <h2 id="intro-title">Über mich</h2>
+            <p class="intro-text">Ich arbeite an der Schnittstelle von Analyse, digitaler Strategie und Umsetzung. Mich motiviert, Komplexität zu strukturieren und Entscheidungen auch unter Unsicherheit wirksam zu machen – mit Respekt vor Menschen, Ressourcen und Kontext.</p>
+          </header>
+          <div class="intro-grid">
+            <article class="card intro-card">
+              <h3>Kurzprofil</h3>
+              <ul class="key-list">
+                <li><strong>Rolle:</strong> Digital-Change- &amp; E-Commerce-Manager mit Führungsverantwortung</li>
+                <li><strong>Fokus:</strong> Ganzheitliche Transformationsprojekte – von Strategie und Architektur bis zu Umsetzung und Teamentwicklung</li>
+                <li><strong>Scope:</strong> Shop- &amp; ERP-Landschaften, Prozessdesign, Datenflüsse, Führung von drei Abteilungen (~50 Mitarbeitende)</li>
+              </ul>
+              <p class="note">Haltung: Digitalisierung ist nur dann sinnvoll, wenn sie Menschen befähigt und wirtschaftlich wie ökologisch trägt. Technologie bleibt Mittel zum Zweck.</p>
+            </article>
+            <article class="card intro-card">
+              <h3>Kernaussagen</h3>
+              <ul class="key-list key-list--bullets">
+                <li>&gt;10 Jahre Erfahrung in digitaler Strategie, Umsetzung und Change in KMU und Genossenschaften</li>
+                <li>Shop Usability Award 2018: Relaunch &amp; Weiterentwicklung eines Onlineshops (Magento → Shopware 5 → Shopware 6)</li>
+                <li>Systemintegration: ERP (Vario 7/8), DMS (bitfarm), Shopware, Marketing-Automation – stabile Datenflüsse, klare Prozesse</li>
+                <li>Veränderungs-Kompetenz: Transparente Kommunikation, strukturierte Schulungskonzepte, Rollenklärung, belastbare Umsetzung</li>
+              </ul>
+            </article>
+            <article class="card intro-card">
+              <h3>Kompetenzbereiche</h3>
+              <dl class="stack">
+                <div class="stack-row">
+                  <dt>Strategisch</dt>
+                  <dd>Digitalstrategie · Strategiepläne · Geschäftsfälle / Eigenfertigung oder Zukauf · Steuerung · Kennzahlen-Modelle · Datenschutz- und Compliance-Strategien (DSGVO) · Nachhaltige Organisationsentwicklung</dd>
+                </div>
+                <div class="stack-row">
+                  <dt>Operativ</dt>
+                  <dd>Shopmanagement (B2C/B2B) · Prozessdesign · Schnittstellenmanagement ERP↔Shop↔DMS↔CRM · Qualitätssicherung · Einführung · Datenmanagement · Dokumentation und Prozessautomatisierung</dd>
+                </div>
+                <div class="stack-row">
+                  <dt>Werkzeuge</dt>
+                  <dd>Shopware 5/6 · Vario 7/8 ERP · bitfarm DMS · Brevo · Matomo/etracker · MS Office/Teams · KI-Tools (Automatisierung, Datenanalyse) · SQL (Basis) · Consent- &amp; Policy-Frameworks (DSGVO) · Projektmanagement-Tools (Trello, Miro)</dd>
+                </div>
+                <div class="stack-row">
+                  <dt>Menschen &amp; Veränderung</dt>
+                  <dd>Abteilungsleitung · Personalgewinnung &amp; Einarbeitung · Schulungen · Flexible Arbeitsmodelle · Veränderungs-Kommunikation · Teamkulturentwicklung · Moderation von Veränderungsprozessen</dd>
+                </div>
+              </dl>
+            </article>
+            <article class="card intro-card">
+              <h3>Schwerpunkte im Überblick</h3>
+              <ul class="focus-list">
+                <li><strong>Digitale Transformation &amp; Veränderungsmanagement</strong> – Gestaltung und Umsetzung strategischer Digitalprojekte mit Fokus auf nachhaltige Strukturen.</li>
+                <li><strong>E-Commerce-Plattformen (Schwerpunkt Shopware)</strong> – Skalierung, Relaunch, Optimierung, Integration von ERP- und DMS-Systemen.</li>
+                <li><strong>Prozessoptimierung &amp; Datenlogik</strong> – Aufbau effizienter Arbeitsabläufe, Schnittstellenmanagement, Steuerung und Qualitätssicherung.</li>
+                <li><strong>Führung &amp; Teamentwicklung</strong> – gezielte Befähigung von Mitarbeitenden, Aufbau digitaler Kompetenzkultur, Coaching &amp; Veränderungs-Kommunikation.</li>
+                <li><strong>Strategie &amp; Organisationsentwicklung</strong> – Strategieplanung, Kennzahlen-Steuerung, nachhaltige Unternehmensentwicklung in genossenschaftlichen Strukturen.</li>
+                <li><strong>Nachhaltigkeit &amp; CSR im Digitalen</strong> – Integration ökologischer und sozialer Ziele in digitale Projekte.</li>
+                <li><strong>KI &amp; Automatisierung</strong> – Einsatz neuer Technologien zur Effizienzsteigerung, Analyse und Entscheidungsunterstützung.</li>
+                <li><strong>Kommunikation &amp; Stakeholder-Management</strong> – Vermittlung komplexer Inhalte zwischen Technik, Management und Teams.</li>
+              </ul>
+            </article>
+          </div>
+          <div class="podcast-player">
+            <div class="podcast-inner">
+              <img src="assets/images/Person/portrait_kk.jpg" alt="Podcast Cover – Kai Kallenberger" class="podcast-cover" />
+              <div class="podcast-content">
+                <h3 class="podcast-title">Analog Denken – Digital Handeln</h3>
+                <p class="podcast-subtitle">Der digitale Podcast von Kai Kallenberger</p>
+                <audio controls class="podcast-audio">
+                  <source src="assets/media/podcast-audio.mp3" type="audio/mpeg" />
+                  Dein Browser unterstützt das Audioelement nicht.
+                </audio>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Arbeitsproben & Projekte: Card-Grid mit Platzhalterbildern -->
+      <section id="work" class="section work" aria-labelledby="work-title">
+        <div class="container">
+          <h2 id="work-title">Arbeitsproben & Projekte</h2>
+          <div class="grid grid-4">
+            <article class="card project">
+              <img src="assets/images/referenzen_uebersicht-finkhof.jpg" alt="Finkhof Relaunch – Referenzen Übersicht" class="project-image" />
+              <div class="project-body">
+                <h3>Finkhof – Relaunch</h3>
+                <p>Kurzbeschreibung: Informationsarchitektur geschärft, Konsistenz erhöht, Leistung stabilisiert.</p>
+                <p class="meta">Rolle: Konzept, Strategie, Umsetzung</p>
+              </div>
+            </article>
+            <article class="card project">
+              <img src="assets/images/SUA-2018-finkhof-qudr.jpg" alt="Shop Usability Award – Finkhof" class="project-image" />
+              <div class="project-body">
+                <h3>Shop Usability Award</h3>
+                <p>Kurzbeschreibung: Nutzerzentriertes E‑Commerce, präzise Navigation, hohe Klarheit.</p>
+                <p class="meta">Rolle: Analyse, Nutzererfahrung, Priorisierung</p>
+              </div>
+            </article>
+            <article class="card project">
+              <img src="assets/images/2017_Versand-Packraum_256_1920x1920.jpg" alt="Transformationsprojekt – Prozessoptimierung Versand/Packraum" class="project-image" />
+              <div class="project-body">
+                <h3>Transformationsprojekt</h3>
+                <p>Kurzbeschreibung: Turnaround durch klare Ziele, Fokus und kontinuierliche Iteration.</p>
+                <p class="meta">Rolle: Priorisierung, Change Management, Steuerung</p>
+              </div>
+            </article>
+            <article class="card project">
+              <img src="assets/images/bidlabu/DSC01053Bidlabu.jpg" alt="bidlabu – Fine Dining Startup" class="project-image" />
+              <div class="project-body">
+                <h3>bidlabu – Fine Dining Startup</h3>
+                <p>Kurzbeschreibung: Aufbau und Leitung eines Fine-Dining-Konzepts mit voller Prozess- und Teamverantwortung.</p>
+                <p class="meta">Rolle: Organisation, Budgetplanung, Qualitätsmanagement</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lebenslauf (Kurzfassung): zweispaltig -->
+      <section id="cv" class="section cv" aria-labelledby="cv-title">
+        <div class="container">
+          <h2 id="cv-title">Lebenslauf (Kurzfassung)</h2>
+          <div class="grid grid-2 cv-grid">
+            <div>
+              <h3>Berufserfahrung</h3>
+              <article class="cv-entry">
+                <header>
+                  <h4>2015–2025 · Schäfereigenossenschaft Finkhof eG</h4>
+                  <p>Leitung Digitalisierung &amp; E-Commerce | 50 Mitarbeitende</p>
+                </header>
+                <p>→ Shop-Relaunch (Magento → Shopware 6), ERP/DMS-Einführung, Shop Usability Award 2018.</p>
+                <p>→ Einführung DSGVO-konformer Prozesse, Digitalisierung der Betriebsabläufe und nachhaltige Prozessoptimierung.</p>
+              </article>
+              <article class="cv-entry">
+                <header>
+                  <h4>2012–2014 · Bender &amp; Beilstein (bidlabu)</h4>
+                  <p>Aufbau &amp; Leitung Fine-Dining-Konzept, Prozess- &amp; Teamverantwortung.</p>
+                </header>
+                <p>→ Organisation, Budgetplanung, Qualitätsmanagement.</p>
+              </article>
+              <article class="cv-entry">
+                <header>
+                  <h4>2011–2012 · Goethe-/EBS-Universität</h4>
+                  <p>Wissenschaftliche Projektleitung, Clusterforschung, internationale Kooperation.</p>
+                </header>
+                <p>→ Datenanalyse, Stakeholder-Management, Forschungskoordination.</p>
+              </article>
+              <article class="cv-entry">
+                <header>
+                  <h4>2002–2011 · Selbständig</h4>
+                  <p>Eventmanagement, Marketing, Projektkoordination.</p>
+                </header>
+                <p>→ Planung und operative Umsetzung von Projekten in Marketing &amp; Kommunikation.</p>
+              </article>
+            </div>
+            <div>
+              <h3>Ausbildung &amp; Kompetenzen</h3>
+              <article class="cv-entry">
+                <header>
+                  <h4>Ausbildung</h4>
+                </header>
+                <p>Diplom-Geograph (Goethe-Uni Frankfurt, Note 1,6) – Schwerpunkte: Wirtschaft &amp; Gesellschaft.</p>
+              </article>
+              <article class="cv-entry">
+                <header>
+                  <h4>Fortbildungen</h4>
+                </header>
+                <p>KI-Manager (A-Leecon, 2025), E-Commerce-Manager (bwgv, 2023).</p>
+              </article>
+              <article class="cv-entry">
+                <header>
+                  <h4>Kernkompetenzen</h4>
+                </header>
+                <p>Digitale Strategie · Prozessoptimierung · Change Management · Führung · SEO/SEA-Basics · Datenanalyse · Datenschutz (DSGVO) · IT-Security-Basiswissen · Kommunikations- &amp; Schnittstellenmanagement · Agile Projektsteuerung.</p>
+              </article>
+              <article class="cv-entry">
+                <header>
+                  <h4>Tools &amp; Systeme</h4>
+                </header>
+                <p>Shopware 5/6 · Vario 7/8 ERP · bitfarm DMS · Brevo · Matomo/etracker · MS Teams/Office · KI-Tools (LLMs, Automatisierung) · SQL (Basis) · DSGVO-Tools · Consent Management &amp; Policy Frameworks · Projektmanagement-Tools (Trello, Miro).</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
+
+      <!-- Kontaktinformationen: DSGVO-konformes Minimalformular -->
+      <section id="kontaktinfo" class="section contact" aria-labelledby="contact-title">
+        <div class="container">
+          <h2 id="contact-title">Kontaktinformationen</h2>
+          <form class="contact-form" method="post" action="" aria-describedby="privacy-note">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
+              <div class="form-field">
+                <label for="email">E‑Mail</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div class="form-field form-field--full">
+                <label for="message">Nachricht</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+            </div>
+            <p id="privacy-note" class="note">Es werden keine Daten gespeichert, nur per E‑Mail weitergeleitet. (Aktuell: Demo, kein Versand)</p>
+            <button type="submit" class="btn btn--primary" aria-disabled="true">Senden (Platzhalter)</button>
+          </form>
+          <div class="contact-direct">
+            <ul class="contact-list">
+              <li><a href="mailto:kai297097@gmail.com" class="link">E‑Mail: Kai Kallenberger</a></li>
+              <li><a href="https://www.linkedin.com/in/kai-kallenberger-652061354/" class="link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="highlights" class="section" aria-labelledby="highlights-title">
+        <div class="container">
+          <h2 id="highlights-title">Highlights</h2>
+          <div class="grid grid-3">
+            <article class="card">
+              <h3>Shop Usability Award</h3>
+              <p>Auszeichnung als Nachweis für nutzerzentriertes E‑Commerce-Handwerk.</p>
+            </article>
+            <article class="card">
+              <h3>Finkhof – Relaunch</h3>
+              <p>Vorher/Nachher: klarere Informationsarchitektur, bessere Orientierung, stabile Performance.</p>
+            </article>
+            <article class="card">
+              <h3>Turnarounds</h3>
+              <p>Messbare KPI-Verbesserungen durch stringente Priorisierung und sauberes Delivery.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="cases" class="section" aria-labelledby="cases-title">
+        <div class="container">
+          <h2 id="cases-title">Case Studies</h2>
+          <article class="case">
+            <header class="case-header">
+              <h3>Finkhof – Shop-Relaunch und CMS</h3>
+            </header>
+            <figure class="case-image" aria-label="Finkhof Relaunch Vorher-Nachher">
+              <img src="assets/images/finkhof-relaunch-vorher-nachher-sw5-sw6-2025-11-10.png" alt="Finkhof Relaunch – Shopware 5 zu Shopware 6 Vergleich" />
+              <figcaption>Vorher (links) vs. neuer Auftritt (Mitte in Sopware 5 sowie rechts in Shopware 6) – konsistente Navigation, klarere Produktstruktur, verbesserte Performance.</figcaption>
+            </figure>
+            <div class="case-body grid grid-2">
+              <div>
+                <h4>Ausgangslage</h4>
+                <p>Unklare Navigationsmuster, inkonsistente Inhalte, fehlende Priorisierung.</p>
+              </div>
+              <div>
+                <h4>Ansatz</h4>
+                <p>Entscheidungen unter Unsicherheit – Hypothesen bilden, testen, iterativ schärfen.</p>
+              </div>
+              <div>
+                <h4>Ergebnis</h4>
+                <p>Verbesserte Orientierung, konsistentere Taxonomie, performanter Aufbau.</p>
+              </div>
+              <div>
+                <h4>Rolle</h4>
+                <p>Analyse, Informationsarchitektur, Abstimmung, Umsetzung und Review.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="testimonials" class="section" aria-labelledby="testimonials-title">
+        <div class="container">
+          <h2 id="testimonials-title">Testimonials</h2>
+          <div class="grid grid-2">
+            <blockquote class="quote">
+              <p>„Verbindlich, strukturiert und zuverlässig in der Umsetzung.“</p>
+              <footer>— Name, Funktion (mit Freigabe)</footer>
+            </blockquote>
+            <blockquote class="quote">
+              <p>„Bringt Ordnung in komplexe Situationen und liefert.“</p>
+              <footer>— Name, Funktion (mit Freigabe)</footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- Zweiter Banner mit ruhigem Naturmotiv für visuelle Pause -->
+      <figure class="banner full-bleed" aria-label="Zweiter Banner">
+        <img src="assets/images/Banner/PXL_20251104_062325191.jpg" alt="Weitwinklige Landschaft als ruhiger Zwischenraum" />
+      </figure>
+
+      <section id="kontakt" class="section" aria-labelledby="kontakt-title">
+        <div class="container">
+          <h2 id="kontakt-title">Kontakt</h2>
+          <p>Bevorzugte Kontaktwege:</p>
+          <ul class="contact-list">
+            <li><a href="mailto:kai297097@gmail.com" class="link">E‑Mail senden</a></li>
+            <li><a href="https://www.linkedin.com/in/kai-kallenberger-652061354/" class="link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          </ul>
+          <p class="note">Hinweis: Keine Tracker, keine Cookies. Formulare nur mit klarer Zweckbindung.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <small>© <span id="year"></span> Kai Kallenberger</small>
+        <nav aria-label="Fußnavigation">
+          <ul class="footer-nav">
+            <li><a href="impressum.html" class="link">Impressum</a></li>
+            <li><a href="datenschutz.html" class="link">Datenschutz</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      // Kein externes Laden, kein Tracking. Minimaler Inline-Script nur für das aktuelle Jahr.
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+  </html>
+
+
