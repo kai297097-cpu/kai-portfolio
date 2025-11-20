@@ -19,10 +19,58 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow">
-    <title>Kai Kallenberger – Portfolio</title>
-    <meta name="description" content="Portfolio-Landingpage von Kai Kallenberger: Erfahrungen, Werte, Erfolge (u. a. Shop Usability Award, Finkhof-Case)." />
+    
+    <!-- Primary Meta Tags -->
+    <title>Kai Kallenberger – Digital-Change- & E-Commerce-Manager | Portfolio</title>
+    <meta name="title" content="Kai Kallenberger – Digital-Change- & E-Commerce-Manager | Portfolio">
+    <meta name="description" content="Portfolio von Kai Kallenberger: Digital-Change-Manager mit 10+ Jahren Erfahrung in E-Commerce, Transformationsprojekten und Team-Leadership. Shop Usability Award 2018.">
+    <meta name="keywords" content="Digital Change Manager, E-Commerce Manager, Shopware, Digitale Transformation, Team Leadership, Shop Usability Award">
+    <meta name="author" content="Kai Kallenberger">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kai297097-cpu.github.io/kai-portfolio/">
+    <meta property="og:title" content="Kai Kallenberger – Digital-Change- & E-Commerce-Manager">
+    <meta property="og:description" content="Portfolio von Kai Kallenberger: Digital-Change-Manager mit 10+ Jahren Erfahrung in E-Commerce, Transformationsprojekten und Team-Leadership.">
+    <meta property="og:image" content="https://kai297097-cpu.github.io/kai-portfolio/assets/images/Person/portrait_kk.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kai297097-cpu.github.io/kai-portfolio/">
+    <meta property="twitter:title" content="Kai Kallenberger – Digital-Change- & E-Commerce-Manager">
+    <meta property="twitter:description" content="Portfolio von Kai Kallenberger: Digital-Change-Manager mit 10+ Jahren Erfahrung in E-Commerce, Transformationsprojekten und Team-Leadership.">
+    <meta property="twitter:image" content="https://kai297097-cpu.github.io/kai-portfolio/assets/images/Person/portrait_kk.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
     <meta name="color-scheme" content="light" />
     <link rel="stylesheet" href="style.css" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Kai Kallenberger",
+      "jobTitle": "Digital-Change- & E-Commerce-Manager",
+      "description": "Digital-Change-Manager mit über 10 Jahren Erfahrung in E-Commerce, digitaler Transformation und Team-Leadership",
+      "url": "https://kai297097-cpu.github.io/kai-portfolio/",
+      "email": "kai297097@gmail.com",
+      "image": "https://kai297097-cpu.github.io/kai-portfolio/assets/images/Person/portrait_kk.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/kai-kallenberger-652061354/"
+      ],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Goethe-Universität Frankfurt"
+      },
+      "award": "Shop Usability Award 2018",
+      "knowsAbout": ["E-Commerce", "Shopware", "Digitale Transformation", "Change Management", "Team Leadership", "ERP-Systeme", "Prozessoptimierung"]
+    }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -50,13 +98,24 @@
 
     <main id="main" tabindex="-1">
       <section id="hero" class="section hero" aria-labelledby="hero-title">
+        <div class="hero-gradient"></div>
         <div class="container hero-inner">
           <div class="hero-content">
             <h1 id="hero-title">Kai Kallenberger</h1>
+            <p class="hero-role">
+              <span class="role-static">Ich bin </span>
+              <span class="role-dynamic" id="typed-text"></span>
+              <span class="role-cursor">|</span>
+            </p>
             <p class="hero-lead">Ich verbinde nachhaltige Werte mit digitalem Fortschritt.</p>
             <p class="hero-tagline">Strategie, Struktur und Menschlichkeit – damit Digitalisierung wirkt.</p>
             <div class="cta-row">
-              <a href="#highlights" class="btn btn--primary">Projekte ansehen</a>
+              <a href="#work" class="btn btn--primary btn--cta">
+                <span>Projekte ansehen</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="margin-left: 0.5rem;">
+                  <path d="M8 3L8 13M8 13L12 9M8 13L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
               <a href="#kontaktinfo" class="btn btn--ghost">Kontakt aufnehmen</a>
               <a href="https://www.linkedin.com/in/kai-kallenberger-652061354/" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
@@ -65,6 +124,11 @@
             <img src="assets/images/Person/image-person_KK.png" alt="Kai Kallenberger" />
           </figure>
         </div>
+        <a href="#work" class="scroll-indicator" aria-label="Zu den Projekten scrollen">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5L12 19M12 19L7 14M12 19L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </section>
 
       <!-- Intro / Einleitung: persönliches Statement und Medien-Platzhalter -->
@@ -75,15 +139,55 @@
             <p class="intro-text">Ich arbeite an der Schnittstelle von Analyse, digitaler Strategie und Umsetzung. Mich motiviert, Komplexität zu strukturieren und Entscheidungen auch unter Unsicherheit wirksam zu machen – mit Respekt vor Menschen, Ressourcen und Kontext.</p>
           </header>
           <div class="intro-grid">
-            <article class="card intro-card">
-              <h3>Kurzprofil</h3>
-              <ul class="key-list">
-                <li><strong>Rolle:</strong> Digital-Change- &amp; E-Commerce-Manager mit Führungsverantwortung</li>
-                <li><strong>Fokus:</strong> Ganzheitliche Transformationsprojekte – von Strategie und Architektur bis zu Umsetzung und Teamentwicklung</li>
-                <li><strong>Scope:</strong> Shop- &amp; ERP-Landschaften, Prozessdesign, Datenflüsse, Führung von drei Abteilungen (~50 Mitarbeitende)</li>
-              </ul>
-              <p class="note">Haltung: Digitalisierung ist nur dann sinnvoll, wenn sie Menschen befähigt und wirtschaftlich wie ökologisch trägt. Technologie bleibt Mittel zum Zweck.</p>
-            </article>
+            <div class="profile-section">
+              <h3 class="profile-section-title">Kurzprofil</h3>
+              <div class="profile-cards">
+                <article class="profile-card">
+                  <div class="profile-card-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                  </div>
+                  <h4 class="profile-card-title">Rolle</h4>
+                  <p class="profile-card-content">Digital-Change- &amp; E-Commerce-Manager mit Führungsverantwortung</p>
+                </article>
+                
+                <article class="profile-card">
+                  <div class="profile-card-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <circle cx="12" cy="12" r="6"></circle>
+                      <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                  </div>
+                  <h4 class="profile-card-title">Fokus</h4>
+                  <p class="profile-card-content">Ganzheitliche Transformationsprojekte – von Strategie und Architektur bis zu Umsetzung und Teamentwicklung</p>
+                </article>
+                
+                <article class="profile-card">
+                  <div class="profile-card-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                      <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                      <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                      <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                    </svg>
+                  </div>
+                  <h4 class="profile-card-title">Scope</h4>
+                  <p class="profile-card-content">Shop- &amp; ERP-Landschaften, Prozessdesign, Datenflüsse, Führung von drei Abteilungen (~50 Mitarbeitende)</p>
+                </article>
+              </div>
+              
+              <blockquote class="profile-quote">
+                <div class="profile-quote-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                  </svg>
+                </div>
+                <p class="profile-quote-text"><strong>Haltung:</strong> Digitalisierung ist nur dann sinnvoll, wenn sie Menschen befähigt und wirtschaftlich wie ökologisch trägt. Technologie bleibt Mittel zum Zweck.</p>
+              </blockquote>
+            </div>
             <article class="card intro-card">
               <h3>Kernaussagen</h3>
               <ul class="key-list key-list--bullets">
@@ -130,7 +234,7 @@
           </div>
           <div class="podcast-player">
             <div class="podcast-inner">
-              <img src="assets/images/Person/portrait_kk.jpg" alt="Podcast Cover – Kai Kallenberger" class="podcast-cover" />
+              <img src="assets/images/Person/portrait_kk.jpg" alt="Podcast Cover – Kai Kallenberger" class="podcast-cover" loading="lazy" />
               <div class="podcast-content">
                 <h3 class="podcast-title">Analog Denken – Digital Handeln</h3>
                 <p class="podcast-subtitle">Der digitale Podcast von Kai Kallenberger</p>
@@ -151,7 +255,7 @@
           <h2 id="work-title">Arbeitsproben & Projekte</h2>
           <div class="grid grid-4">
             <article class="card project">
-              <img src="assets/images/referenzen_uebersicht-finkhof.jpg" alt="Finkhof Relaunch – Referenzen Übersicht" class="project-image" />
+              <img src="assets/images/referenzen_uebersicht-finkhof.jpg" alt="Finkhof Relaunch – Referenzen Übersicht" class="project-image" loading="lazy" />
               <div class="project-body">
                 <h3>Finkhof – Relaunch</h3>
                 <p>Kurzbeschreibung: Informationsarchitektur geschärft, Konsistenz erhöht, Leistung stabilisiert.</p>
@@ -159,7 +263,7 @@
               </div>
             </article>
             <article class="card project">
-              <img src="assets/images/SUA-2018-finkhof-qudr.jpg" alt="Shop Usability Award – Finkhof" class="project-image" />
+              <img src="assets/images/SUA-2018-finkhof-qudr.jpg" alt="Shop Usability Award – Finkhof" class="project-image" loading="lazy" />
               <div class="project-body">
                 <h3>Shop Usability Award</h3>
                 <p>Kurzbeschreibung: Nutzerzentriertes E‑Commerce, präzise Navigation, hohe Klarheit.</p>
@@ -167,7 +271,7 @@
               </div>
             </article>
             <article class="card project">
-              <img src="assets/images/2017_Versand-Packraum_256_1920x1920.jpg" alt="Transformationsprojekt – Prozessoptimierung Versand/Packraum" class="project-image" />
+              <img src="assets/images/2017_Versand-Packraum_256_1920x1920.jpg" alt="Transformationsprojekt – Prozessoptimierung Versand/Packraum" class="project-image" loading="lazy" />
               <div class="project-body">
                 <h3>Transformationsprojekt</h3>
                 <p>Kurzbeschreibung: Turnaround durch klare Ziele, Fokus und kontinuierliche Iteration.</p>
@@ -175,7 +279,7 @@
               </div>
             </article>
             <article class="card project">
-              <img src="assets/images/bidlabu/DSC01053Bidlabu.jpg" alt="bidlabu – Fine Dining Startup" class="project-image" />
+              <img src="assets/images/bidlabu/DSC01053Bidlabu.jpg" alt="bidlabu – Fine Dining Startup" class="project-image" loading="lazy" />
               <div class="project-body">
                 <h3>bidlabu – Fine Dining Startup</h3>
                 <p>Kurzbeschreibung: Aufbau und Leitung eines Fine-Dining-Konzepts mit voller Prozess- und Teamverantwortung.</p>
@@ -286,7 +390,7 @@
           </form>
           <div class="contact-direct">
             <ul class="contact-list">
-              <li><a href="mailto:kai297097@gmail.com" class="link">E‑Mail: Kai Kallenberger</a></li>
+              <li><a href="mailto:kai297097@gmail.com" class="link">E‑Mail an Kai Kallenberger senden</a></li>
               <li><a href="https://www.linkedin.com/in/kai-kallenberger-652061354/" class="link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             </ul>
           </div>
@@ -320,7 +424,7 @@
               <h3>Finkhof – Shop-Relaunch und CMS</h3>
             </header>
             <figure class="case-image" aria-label="Finkhof Relaunch Vorher-Nachher">
-              <img src="assets/images/finkhof-relaunch-vorher-nachher-sw5-sw6-2025-11-10.png" alt="Finkhof Relaunch – Shopware 5 zu Shopware 6 Vergleich" />
+              <img src="assets/images/finkhof-relaunch-vorher-nachher-sw5-sw6-2025-11-10.png" alt="Finkhof Relaunch – Shopware 5 zu Shopware 6 Vergleich" loading="lazy" />
               <figcaption>Vorher (links) vs. neuer Auftritt (Mitte in Sopware 5 sowie rechts in Shopware 6) – konsistente Navigation, klarere Produktstruktur, verbesserte Performance.</figcaption>
             </figure>
             <div class="case-body grid grid-2">
@@ -363,7 +467,7 @@
 
       <!-- Zweiter Banner mit ruhigem Naturmotiv für visuelle Pause -->
       <figure class="banner full-bleed" aria-label="Zweiter Banner">
-        <img src="assets/images/Banner/PXL_20251104_062325191.jpg" alt="Weitwinklige Landschaft als ruhiger Zwischenraum" />
+        <img src="assets/images/Banner/PXL_20251104_062325191.jpg" alt="Weitwinklige Landschaft als ruhiger Zwischenraum" loading="lazy" />
       </figure>
 
       <section id="kontakt" class="section" aria-labelledby="kontakt-title">
@@ -380,16 +484,48 @@
     </main>
 
     <footer class="site-footer" role="contentinfo">
-      <div class="container footer-inner">
-        <small>© <span id="year"></span> Kai Kallenberger</small>
-        <nav aria-label="Fußnavigation">
-          <ul class="footer-nav">
-            <li><a href="impressum.html" class="link">Impressum</a></li>
-            <li><a href="datenschutz.html" class="link">Datenschutz</a></li>
+      <div class="container footer-grid">
+        <div class="footer-column">
+          <h3 class="footer-title">Quick Links</h3>
+          <nav aria-label="Footer Navigation">
+            <ul class="footer-links">
+              <li><a href="#highlights">Highlights</a></li>
+              <li><a href="#cases">Case Studies</a></li>
+              <li><a href="#testimonials">Referenzen</a></li>
+              <li><a href="#kontaktinfo">Kontakt</a></li>
+            </ul>
+          </nav>
+        </div>
+        
+        <div class="footer-column">
+          <h3 class="footer-title">Kontakt</h3>
+          <ul class="footer-contact">
+            <li><a href="mailto:kai297097@gmail.com">kai297097@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/kai-kallenberger-652061354/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           </ul>
-        </nav>
+        </div>
+        
+        <div class="footer-column">
+          <h3 class="footer-title">Rechtliches</h3>
+          <ul class="footer-links">
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+          </ul>
+          <p class="footer-note">DSGVO-konform<br>Keine Tracker, keine Cookies</p>
+        </div>
+      </div>
+      
+      <div class="container footer-bottom">
+        <p>© <span id="year"></span> Kai Kallenberger. Alle Rechte vorbehalten.</p>
       </div>
     </footer>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Zurück nach oben">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 19V5M12 5L5 12M12 5L19 12"/>
+      </svg>
+    </button>
 
     <script>
       // Kein externes Laden, kein Tracking. Minimaler Inline-Script nur für das aktuelle Jahr.
@@ -414,6 +550,133 @@
           burgerBtn.classList.remove('burger-open');
           burgerBtn.setAttribute('aria-expanded', 'false');
           burgerBtn.setAttribute('aria-label', 'Menü öffnen');
+        });
+      });
+      
+      // Typed Text Animation (No external library - DSGVO compliant)
+      const roles = [
+        'Digital-Change-Manager',
+        'E-Commerce-Experte',
+        'Team Leader',
+        'Strategie-Berater',
+        'Transformations-Begleiter'
+      ];
+      
+      let roleIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typedElement = document.getElementById('typed-text');
+      const typingSpeed = 100;
+      const deletingSpeed = 50;
+      const pauseTime = 2000;
+      
+      function typeText() {
+        const currentRole = roles[roleIndex];
+        
+        if (isDeleting) {
+          typedElement.textContent = currentRole.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          typedElement.textContent = currentRole.substring(0, charIndex + 1);
+          charIndex++;
+        }
+        
+        let timeout = isDeleting ? deletingSpeed : typingSpeed;
+        
+        if (!isDeleting && charIndex === currentRole.length) {
+          timeout = pauseTime;
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+        
+        setTimeout(typeText, timeout);
+      }
+      
+      // Start typing animation after page load
+      window.addEventListener('load', () => {
+        setTimeout(typeText, 500);
+      });
+      
+      // Smooth scroll for all anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (href !== '#' && href !== '#hero') {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          }
+        });
+      });
+      
+      // Sticky Header Scroll Effect
+      const header = document.querySelector('.site-header');
+      let lastScrollY = window.scrollY;
+      
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        // Add scrolled class for backdrop blur effect
+        if (currentScrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+        
+        lastScrollY = currentScrollY;
+      });
+      
+      // Active Navigation State based on Scroll Position
+      const sections = document.querySelectorAll('section[id]');
+      const navLinksForActive = document.querySelectorAll('.nav-list a[href^="#"]');
+      
+      function updateActiveNav() {
+        const scrollY = window.scrollY + 100; // Offset for header
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+          
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            navLinksForActive.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${sectionId}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }
+      
+      // Update on scroll
+      window.addEventListener('scroll', updateActiveNav);
+      
+      // Update on load
+      window.addEventListener('load', updateActiveNav);
+      
+      // Back to Top Button
+      const backToTopBtn = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+      
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
         });
       });
     </script>
