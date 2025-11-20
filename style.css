@@ -642,13 +642,6 @@ a:hover, a:focus { text-decoration: underline; }
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.profile-quote-icon {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
-  color: var(--color-terracotta);
-  opacity: 0.3;
-}
 
 .profile-quote-text {
   margin: 0;
