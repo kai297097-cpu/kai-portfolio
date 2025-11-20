@@ -32,6 +32,11 @@
         <div class="brand">
           <a href="#hero" class="brand-link" aria-label="Startseite">Kai Kallenberger</a>
         </div>
+        <button class="burger-menu" aria-label="Menü öffnen" aria-expanded="false">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
         <nav class="site-nav" aria-label="Hauptnavigation">
           <ul class="nav-list">
             <li><a href="#highlights">Highlights</a></li>
@@ -389,6 +394,28 @@
     <script>
       // Kein externes Laden, kein Tracking. Minimaler Inline-Script nur für das aktuelle Jahr.
       document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // Burger Menu Toggle
+      const burgerBtn = document.querySelector('.burger-menu');
+      const nav = document.querySelector('.site-nav');
+      const navLinks = document.querySelectorAll('.nav-list a');
+      
+      burgerBtn.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('nav-open');
+        burgerBtn.classList.toggle('burger-open');
+        burgerBtn.setAttribute('aria-expanded', isOpen);
+        burgerBtn.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
+      });
+      
+      // Close menu when clicking on a link
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('nav-open');
+          burgerBtn.classList.remove('burger-open');
+          burgerBtn.setAttribute('aria-expanded', 'false');
+          burgerBtn.setAttribute('aria-label', 'Menü öffnen');
+        });
+      });
     </script>
   </body>
   </html>
