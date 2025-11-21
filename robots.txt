@@ -1,29 +1,86 @@
 # robots.txt für Portfolio Kai Kallenberger
-# Diese Seite soll NICHT von Suchmaschinen indexiert werden
+# Diese Seite soll NICHT von Suchmaschinen und AI-Crawlern indexiert werden
 
-# Alle Bots blockieren
-User-agent: *
+# OpenAI's GPTBot - for ChatGPT and OpenAI models
+User-agent: GPTBot
 Disallow: /
 
-# Explizit auch für häufige Crawler
+# Common Crawl Bot - for web archiving and LLM training
+User-agent: CCBot
+Disallow: /
+
+# Google's web crawler
 User-agent: Googlebot
 Disallow: /
 
-User-agent: Bingbot
+# Microsoft Bing's web crawler
+User-agent: BingBot
 Disallow: /
 
-User-agent: Slurp
+# Claude AI crawler
+User-agent: Claude-Web
 Disallow: /
 
-User-agent: DuckDuckBot
+User-agent: ChatGPT-User
 Disallow: /
 
-User-agent: Baiduspider
+# Apple crawler
+User-agent: Applebot
 Disallow: /
 
+# Perplexity AI crawler
+User-agent: PerplexityBot
+Disallow: /
+
+# Anthropic Claude crawler
+User-agent: anthropic-ai
+Disallow: /
+
+# Google AI crawler (for AI Overviews)
+User-agent: Google-Extended
+Disallow: /
+
+# Apple AI crawler
+User-agent: Applebot-Extended
+Disallow: /
+
+# Social Media Crawlers
+User-agent: facebookexternalhit
+Disallow: /
+
+User-agent: Twitterbot
+Disallow: /
+
+User-agent: LinkedInBot
+Disallow: /
+
+# Yandex
 User-agent: YandexBot
 Disallow: /
 
-# Sitemap (optional, falls später gewünscht)
-# Sitemap: https://kai297097-cpu.github.io/kai-portfolio/sitemap.xml
+# Baidu
+User-agent: Baiduspider
+Disallow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Disallow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+# Amazon AI
+User-agent: Amazonbot
+Disallow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Disallow: /
+
+# All other bots
+User-agent: *
+Disallow: /
+
+# No sitemap - site should not be indexed
 

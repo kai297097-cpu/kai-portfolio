@@ -992,6 +992,35 @@
           behavior: 'smooth'
         });
       });
+      
+      // Intersection Observer for Scroll Animations (Fade-In)
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+      
+      // Observe all cards, sections, and animated elements
+      document.addEventListener('DOMContentLoaded', () => {
+        const animatedElements = document.querySelectorAll('.card, .profile-card, .achievement-card, .case, .quote, .intro-header, .podcast-player');
+        
+        animatedElements.forEach((el, index) => {
+          el.classList.add('fade-in');
+          // Add staggered delays for elements in the same section
+          if (index % 4 === 1) el.classList.add('fade-in-delay-1');
+          if (index % 4 === 2) el.classList.add('fade-in-delay-2');
+          if (index % 4 === 3) el.classList.add('fade-in-delay-3');
+          
+          observer.observe(el);
+        });
+      });
     </script>
   </body>
   </html>
