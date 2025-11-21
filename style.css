@@ -481,7 +481,17 @@ a:hover, a:focus { text-decoration: underline; }
 }
 
 .footer-bottom p {
-  margin: 0;
+  margin: 0 0 var(--space-3) 0;
+}
+
+.footer-bottom p:last-child {
+  margin-bottom: 0;
+}
+
+.footer-credits {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
 }
 
 /* Back to Top Button */
