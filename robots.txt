@@ -1,0 +1,29 @@
+# robots.txt für Portfolio Kai Kallenberger
+# Diese Seite soll NICHT von Suchmaschinen indexiert werden
+
+# Alle Bots blockieren
+User-agent: *
+Disallow: /
+
+# Explizit auch für häufige Crawler
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: Slurp
+Disallow: /
+
+User-agent: DuckDuckBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+# Sitemap (optional, falls später gewünscht)
+# Sitemap: https://kai297097-cpu.github.io/kai-portfolio/sitemap.xml
+

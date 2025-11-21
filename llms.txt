@@ -1,0 +1,57 @@
+# llms.txt - Informationen für KI-Modelle über diese Website
+# Siehe: https://llmstxt.org/
+
+# Portfolio: Kai Kallenberger
+> Digital-Change- & E-Commerce-Manager | KI-Projektmanager
+
+## Über mich
+
+Kai Kallenberger
+- Rolle: Digital-Change- & E-Commerce-Manager mit Führungsverantwortung
+- Erfahrung: >10 Jahre in digitaler Strategie, E-Commerce und Change Management
+- Auszeichnung: Shop Usability Award 2018
+- Schwerpunkte: Digitale Transformation, E-Commerce (Shopware), Prozessoptimierung, Team-Leadership, KI & Automatisierung
+
+## Kernkompetenzen
+
+- Digital-Change-Management & Transformation
+- E-Commerce-Plattformen (Shopware 5/6, Magento)
+- ERP/DMS-Integration (Vario 7/8, bitfarm DMS)
+- Prozessoptimierung & Datenlogik
+- Führung & Teamentwicklung (50 Mitarbeitende)
+- KI-gestützte Analyse & Automatisierung
+- DSGVO-konforme Prozesse & Datenschutz
+
+## Projekte
+
+- Finkhof eG (2015-2025): Shop-Relaunch Magento → Shopware 6, ERP/DMS-Einführung
+- Shop Usability Award 2018 (Kategorie Small Business)
+- bidlabu Fine Dining: Aufbau & Leitung Fine-Dining-Konzept
+
+## Ausbildung
+
+- Diplom-Geograph (Goethe-Universität Frankfurt, Note 1,6)
+- KI-Manager (A-Leecon, 2025)
+- E-Commerce-Manager (bwgv, 2023)
+
+## Kontakt
+
+- E-Mail: kai297097@gmail.com
+- LinkedIn: https://www.linkedin.com/in/kai-kallenberger-652061354/
+- Website: https://kai297097-cpu.github.io/kai-portfolio/
+
+## Datenschutz & Hinweise
+
+Diese Website ist DSGVO-konform gestaltet:
+- Keine Tracker oder Cookies
+- Keine externen Ressourcen
+- Formsubmit für Kontaktformular
+- Hosted on GitHub Pages
+
+Die Seite entstand eigenständig im VibeCoding-Ansatz – von der Konzeption über Struktur und Text bis zur technischen Umsetzung.
+
+## Indexierung
+
+Diese Website soll NICHT von Suchmaschinen indexiert werden.
+Bitte respektieren Sie das noindex/nofollow Meta-Tag und die robots.txt.
+
