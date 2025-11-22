@@ -541,6 +541,19 @@
                   <p>Transparente Kommunikation, strukturierte Schulungskonzepte, Rollenklärung, belastbare Umsetzung</p>
                 </div>
               </article>
+              
+              <article class="achievement-card">
+                <div class="achievement-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                    <polyline points="17 6 23 6 23 12"></polyline>
+                  </svg>
+                </div>
+                <div class="achievement-content">
+                  <h4>Umsatzsteigerung von über 20 % nach Shop-Relaunch</h4>
+                  <p>Messbare Ergebnisse durch datengetriebene Optimierung, klare Informationsarchitektur und performante Strukturen</p>
+                </div>
+              </article>
             </div>
           </div>
           <div class="podcast-player">
@@ -559,6 +572,19 @@
         </div>
       </section>
 
+      <!-- Wie ich arbeite: Führungsphilosophie -->
+      <section id="approach" class="section philosophy-section" aria-labelledby="philosophy-title">
+        <div class="container">
+          <header class="philosophy-header">
+            <h2 id="philosophy-title">Wie ich arbeite</h2>
+          </header>
+          <div class="philosophy-content">
+            <p class="philosophy-statement">Ich arbeite mit Menschen, nicht mit Rollen.</p>
+            <p class="philosophy-text">Gute Führung entsteht durch Nähe, Respekt und das Vertrauen, dass jede Stimme wertvoll ist.</p>
+            <p class="philosophy-conclusion">Diese Haltung begleitet mich seit Jahren – sie macht mich als Chef nahbar und schafft ein Umfeld, in dem Teams wachsen können.</p>
+          </div>
+        </div>
+      </section>
 
       <!-- Arbeitsproben & Projekte: Card-Grid mit Platzhalterbildern -->
       <section id="work" class="section work" aria-labelledby="work-title">
@@ -749,12 +775,16 @@
               </div>
               <div>
                 <h4>Ergebnis</h4>
-                <p>Verbesserte Orientierung, konsistentere Taxonomie, performanter Aufbau.</p>
+                <p>Eine klarere Navigation, konsistente Taxonomie und eine performante Struktur führten zu einer spürbar besseren Nutzerführung – und zu einer Umsatzsteigerung von über 20 % im Folgejahr nach dem Relaunch.</p>
               </div>
               <div>
                 <h4>Rolle</h4>
                 <p>Analyse, Informationsarchitektur, Abstimmung, Umsetzung und Review.</p>
               </div>
+            </div>
+            <div class="case-solution">
+              <h4>Problemlösung</h4>
+              <p>Komplexität reduzieren, Unsicherheiten strukturieren und handlungsfähige Optionen entwickeln. Durch gezielte Hypothesenbildung, iterative Tests und klare Priorisierung entstand eine belastbare Entscheidungsgrundlage, die Navigation, Inhalte und technische Umsetzung wirksam ausrichtete.</p>
             </div>
           </article>
         </div>
@@ -1009,7 +1039,7 @@
       
       // Observe all cards, sections, and animated elements
       document.addEventListener('DOMContentLoaded', () => {
-        const animatedElements = document.querySelectorAll('.card, .profile-card, .achievement-card, .case, .quote, .intro-header, .podcast-player');
+        const animatedElements = document.querySelectorAll('.card, .profile-card, .achievement-card, .case, .quote, .intro-header, .podcast-player, .philosophy-content');
         
         animatedElements.forEach((el, index) => {
           el.classList.add('fade-in');
