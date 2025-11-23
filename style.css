@@ -1147,14 +1147,12 @@ h4 {
   height: 100%;
   object-fit: contain;
   padding: 4px;
-  mix-blend-mode: multiply;
-  filter: contrast(1.2) brightness(0.9);
 }
 
 .achievement-icon-handshake img {
-  mix-blend-mode: screen;
-  filter: contrast(1.5) brightness(1.1) invert(1);
-  opacity: 0.9;
+  mix-blend-mode: multiply;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
 }
 
 .achievement-card:hover .achievement-icon {
