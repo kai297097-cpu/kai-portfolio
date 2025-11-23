@@ -1150,9 +1150,19 @@ h4 {
 }
 
 .achievement-icon-handshake img {
-  mix-blend-mode: multiply;
-  filter: brightness(0) invert(1);
-  opacity: 0.95;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.achievement-icon-heart img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+  border-radius: 12px;
 }
 
 .achievement-icon-gemini img {
