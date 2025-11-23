@@ -1155,6 +1155,15 @@ h4 {
   opacity: 0.95;
 }
 
+.achievement-icon-gemini img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+  mix-blend-mode: multiply;
+  filter: contrast(1.5) brightness(0.95);
+}
+
 .achievement-card:hover .achievement-icon {
   transform: rotate(-5deg) scale(1.1);
 }
