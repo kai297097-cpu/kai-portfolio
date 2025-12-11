@@ -1,2 +1,4 @@
 *.mp4
 *.mov
+# Ausnahme: Videos im KI-Projektmanager Ordner sollen versioniert werden
+!assets/media/KI-Projektmanager/*.mp4
