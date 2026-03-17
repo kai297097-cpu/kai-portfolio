@@ -17,7 +17,6 @@ const GOOGLE_SHEETS_ID = process.env.GOOGLE_SHEETS_ID;
 const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
 const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY;
 
-<<<<<<< HEAD
 if (
   !ALLOWED_ORIGIN ||
   !FLOWISE_API_URL ||
@@ -28,7 +27,7 @@ if (
   !GOOGLE_PRIVATE_KEY
 ) {
   console.error("Missing required environment variables.");
-=======
+
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
@@ -53,7 +52,7 @@ function buildFlowiseEndpoint() {
   if (chatflowId) return `${base}/api/v1/prediction/${chatflowId}`;
 
   return base;
->>>>>>> f5be745e548abb47c07dd97a7c317c337ffda299
+ f5be745e548abb47c07dd97a7c317c337ffda299
 }
 
 app.use(helmet());
