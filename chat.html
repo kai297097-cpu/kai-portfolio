@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Chat – Krypto‑Agent</title>
+    <meta name="description" content="Krypto‑Agent Chat (via sicherem Backend‑Proxy). Keine Secrets im Browser." />
+    <link rel="stylesheet" href="./chat.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <a class="back" href="./index.html" aria-label="Zurück zur Startseite">← Portfolio</a>
+        <div class="title">
+          <h1>Krypto‑Agent</h1>
+          <p>Chat über sicheren Proxy (Flowise bleibt serverseitig).</p>
+        </div>
+      </header>
+
+      <section class="card chat" aria-label="Chat">
+        <div id="chatLog" class="chat__log" role="log" aria-live="polite" aria-relevant="additions text"></div>
+
+        <div class="chat__status">
+          <span id="statusText" class="status__text" aria-live="polite"></span>
+          <span id="errorText" class="status__error" role="alert"></span>
+        </div>
+
+        <form id="chatForm" class="chat__form" autocomplete="off">
+          <label class="sr-only" for="messageInput">Nachricht</label>
+          <input
+            id="messageInput"
+            class="chat__input"
+            type="text"
+            inputmode="text"
+            maxlength="1000"
+            placeholder="Frag den Agenten …"
+            required
+          />
+          <button id="sendBtn" class="chat__send" type="submit">Senden</button>
+        </form>
+
+        <p class="hint">
+          Security-by-Design: Keine Credentials im Frontend. Anfragen gehen nur an das Proxy‑Backend.
+        </p>
+      </section>
+    </main>
+
+    <!-- Für GitHub Pages: `chat-config.js` enthält NUR die Backend-URL (ohne Secrets). -->
+    <script src="./chat-config.js" onerror="void 0"></script>
+    <script src="./chat.js" defer></script>
+  </body>
+</html>
+

@@ -602,6 +602,23 @@
       <section id="work" class="section work" aria-labelledby="work-title">
         <div class="container">
           <h2 id="work-title">Arbeitsproben & Projekte</h2>
+          <div class="card" style="margin: 1.25rem 0; padding: 1.25rem;">
+            <h3 style="margin-top: 0;">KI‑Chat (Krypto‑Agent)</h3>
+            <p style="margin-bottom: 0.75rem;">
+              Der Chat läuft über ein sicheres Proxy‑Backend (keine Secrets im Browser, kein direkter Flowise‑Zugriff).
+              <a href="chat.html" class="link" style="margin-left: 0.25rem;">Chat in neuem Tab öffnen</a>
+            </p>
+            <iframe
+              title="Krypto-Agent Chat"
+              src="chat.html"
+              style="width: 100%; height: 560px; border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; background: #0b0f14;"
+              loading="lazy"
+            ></iframe>
+            <p class="note" style="margin-top: 0.75rem;">
+              Falls der Chat leer bleibt: Bitte `chat-config.js` setzen (Backend‑URL) und CORS im Backend auf
+              `https://kai297097-cpu.github.io` erlauben.
+            </p>
+          </div>
           <div class="grid grid-4">
             <article class="card project">
               <img src="assets/images/referenzen_uebersicht-finkhof.jpg" alt="Finkhof Relaunch – Referenzen Übersicht" class="project-image" loading="lazy" />
