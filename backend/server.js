@@ -17,6 +17,7 @@ const GOOGLE_SHEETS_ID = process.env.GOOGLE_SHEETS_ID;
 const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
 const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY;
 
+<<<<<<< HEAD
 if (
   !ALLOWED_ORIGIN ||
   !FLOWISE_API_URL ||
@@ -27,6 +28,32 @@ if (
   !GOOGLE_PRIVATE_KEY
 ) {
   console.error("Missing required environment variables.");
+=======
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "https://kai297097-cpu.github.io";
+const FLOWISE_API_URL = process.env.FLOWISE_API_URL || "";
+const FLOWISE_USERNAME = process.env.FLOWISE_USERNAME || "";
+const FLOWISE_PASSWORD = process.env.FLOWISE_PASSWORD || "";
+
+function buildFlowiseEndpoint() {
+  const base = FLOWISE_API_URL.trim().replace(/\/$/, "");
+  if (!base) return "";
+
+  // Allow passing the full endpoint via env var.
+  // Example: https://<flowise>.onrender.com/api/v1/prediction/<chatflow-id>
+  const looksLikePredictionEndpoint = /\/api\/v1\/prediction\/[^/]+$/.test(base);
+  if (looksLikePredictionEndpoint) return base;
+
+  // Optional compatibility: if user passes base URL, allow appending chatflow id
+  // (kept here as implementation, but not required by env var list).
+  const chatflowId = (process.env.FLOWISE_CHATFLOW_ID || "").trim();
+  if (chatflowId) return `${base}/api/v1/prediction/${chatflowId}`;
+
+  return base;
+>>>>>>> f5be745e548abb47c07dd97a7c317c337ffda299
 }
 
 app.use(helmet());
