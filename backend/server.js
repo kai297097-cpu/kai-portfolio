@@ -17,6 +17,10 @@ app.use(
   })
 );
 
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "https://kai297097-cpu.github.io";
 const FLOWISE_API_URL = process.env.FLOWISE_API_URL || "";
 const FLOWISE_USERNAME = process.env.FLOWISE_USERNAME || "";
