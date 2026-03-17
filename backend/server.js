@@ -1,173 +1,332 @@
 const express = require("express");
-const helmet = require("helmet");
 const cors = require("cors");
+const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
-const { z } = require("zod");
+const fetch = require("node-fetch");
+const { google } = require("googleapis");
 
 const app = express();
 
-// Security-by-design: reduce fingerprinting
-app.disable("x-powered-by");
-app.set("trust proxy", 1);
+const PORT = process.env.PORT || 10000;
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;
+const FLOWISE_API_URL = process.env.FLOWISE_API_URL;
+const FLOWISE_USERNAME = process.env.FLOWISE_USERNAME;
+const FLOWISE_PASSWORD = process.env.FLOWISE_PASSWORD;
 
-// Security headers (API-only service)
-app.use(
-  helmet({
-    contentSecurityPolicy: false,
-  })
-);
+const GOOGLE_SHEETS_ID = process.env.GOOGLE_SHEETS_ID;
+const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY;
 
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "https://kai297097-cpu.github.io";
-const FLOWISE_API_URL = process.env.FLOWISE_API_URL || "";
-const FLOWISE_USERNAME = process.env.FLOWISE_USERNAME || "";
-const FLOWISE_PASSWORD = process.env.FLOWISE_PASSWORD || "";
-
-function buildFlowiseEndpoint() {
-  const base = FLOWISE_API_URL.trim().replace(/\/$/, "");
-  if (!base) return "";
-
-  // Allow passing the full endpoint via env var.
-  // Example: https://<flowise>.onrender.com/api/v1/prediction/<chatflow-id>
-  const looksLikePredictionEndpoint = /\/api\/v1\/prediction\/[^/]+$/.test(base);
-  if (looksLikePredictionEndpoint) return base;
-
-  // Optional compatibility: if user passes base URL, allow appending chatflow id
-  // (kept here as implementation, but not required by env var list).
-  const chatflowId = (process.env.FLOWISE_CHATFLOW_ID || "").trim();
-  if (chatflowId) return `${base}/api/v1/prediction/${chatflowId}`;
-
-  return base;
+if (
+  !ALLOWED_ORIGIN ||
+  !FLOWISE_API_URL ||
+  !FLOWISE_USERNAME ||
+  !FLOWISE_PASSWORD ||
+  !GOOGLE_SHEETS_ID ||
+  !GOOGLE_SERVICE_ACCOUNT_EMAIL ||
+  !GOOGLE_PRIVATE_KEY
+) {
+  console.error("Missing required environment variables.");
 }
 
-const FLOWISE_ENDPOINT = buildFlowiseEndpoint();
+app.use(helmet());
+app.use(express.json({ limit: "50kb" }));
 
-// CORS: allow ONLY your GitHub Pages origin (not the full page URL).
 app.use(
   cors({
-    origin(origin, cb) {
-      // Allow non-browser requests without Origin header (e.g. Render health checks).
-      if (!origin) return cb(null, true);
-      if (origin === ALLOWED_ORIGIN) return cb(null, true);
-      return cb(new Error("CORS"), false);
-    },
-    methods: ["POST", "OPTIONS"],
+    origin: ALLOWED_ORIGIN,
+    methods: ["POST", "GET"],
     allowedHeaders: ["Content-Type"],
-    maxAge: 86400,
   })
 );
 
-// Only accept JSON and keep request size small (DoS safety).
-app.use(
-  express.json({
-    limit: "20kb",
-    type: "application/json",
-  })
-);
-
-// Strict JSON-only for POST (prevents form posts / unexpected content types).
-app.use((req, res, next) => {
-  if (req.method === "POST") {
-    const ct = String(req.headers["content-type"] || "").toLowerCase();
-    if (!ct.includes("application/json")) {
-      return res.status(415).json({ error: "Unsupported Media Type" });
-    }
-  }
-  next();
-});
-
-// Rate limiting (basic abuse protection)
-const chatLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  limit: 60,
+const limiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 20,
   standardHeaders: true,
   legacyHeaders: false,
-  message: { error: "Too many requests" },
 });
-
-// Input validation (accept {message} OR {question})
-const chatSchema = z
-  .object({
-    message: z.string().trim().max(1000).optional(),
-    question: z.string().trim().max(1000).optional(),
-  })
-  .refine((v) => Boolean(v.message || v.question), { message: "Missing message" })
-  .transform((v) => ({
-    question: (v.question || v.message || "").trim(),
-  }))
-  .refine((v) => v.question.length >= 1, { message: "Empty message" });
+app.use(limiter);
 
 app.get("/health", (req, res) => {
-  res.status(200).json({ ok: true });
+  res.status(200).json({ status: "ok" });
 });
 
-// Only POST on /api/chat (everything else is rejected)
-app.all("/api/chat", (req, res, next) => {
-  if (req.method === "POST" || req.method === "OPTIONS") return next();
-  res.setHeader("Allow", "POST, OPTIONS");
-  return res.status(405).json({ error: "Method Not Allowed" });
-});
+function getGoogleAuth() {
+  return new google.auth.GoogleAuth({
+    credentials: {
+      client_email: GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      private_key: GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+    },
+    scopes: [
+      "https://www.googleapis.com/auth/spreadsheets.readonly",
+      "https://www.googleapis.com/auth/drive.readonly",
+    ],
+  });
+}
 
-app.post("/api/chat", chatLimiter, async (req, res) => {
-  // Security-by-design: no logging of user input or secrets
-  const parsed = chatSchema.safeParse(req.body);
-  if (!parsed.success) {
-    return res.status(400).json({ error: "Invalid input" });
+async function getSheetRows(range) {
+  const auth = getGoogleAuth();
+  const sheets = google.sheets({ version: "v4", auth });
+
+  const response = await sheets.spreadsheets.values.get({
+    spreadsheetId: GOOGLE_SHEETS_ID,
+    range,
+  });
+
+  return response.data.values || [];
+}
+
+function rowToObject(headers, row) {
+  const obj = {};
+  headers.forEach((header, index) => {
+    obj[header] = row[index] ?? "";
+  });
+  return obj;
+}
+
+async function getLastDataRow(sheetName) {
+  const rows = await getSheetRows(`${sheetName}!A:Z`);
+
+  if (!rows || rows.length < 2) {
+    throw new Error(`Sheet ${sheetName} has no data rows.`);
   }
 
-  if (!FLOWISE_ENDPOINT) {
-    return res.status(500).json({ error: "Server not configured" });
+  const headers = rows[0];
+  const dataRows = rows.slice(1).filter((row) => row.some((cell) => String(cell).trim() !== ""));
+
+  if (dataRows.length === 0) {
+    throw new Error(`Sheet ${sheetName} has no non-empty rows.`);
   }
 
-  const headers = {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  };
+  const lastRow = dataRows[dataRows.length - 1];
+  return rowToObject(headers, lastRow);
+}
 
-  // Optional Basic Auth (server-side only)
-  if (FLOWISE_USERNAME && FLOWISE_PASSWORD) {
-    const token = Buffer.from(`${FLOWISE_USERNAME}:${FLOWISE_PASSWORD}`).toString("base64");
-    headers.Authorization = `Basic ${token}`;
+function pickFirst(obj, candidates) {
+  for (const key of candidates) {
+    if (obj[key] !== undefined && obj[key] !== null && String(obj[key]).trim() !== "") {
+      return obj[key];
+    }
+  }
+  return "";
+}
+
+function buildCombinedPrompt(userMessage, marketRow, sentimentRow) {
+  const timestamp = pickFirst(marketRow, [
+    "timestamp [Datum, Uhrzeit] (A)",
+    "timestamp",
+  ]);
+
+  const price = pickFirst(marketRow, [
+    "price [$] (B)",
+    "price",
+  ]);
+
+  const funding = pickFirst(marketRow, [
+    "funding [%] (C)",
+    "funding",
+  ]);
+
+  const openInterest = pickFirst(marketRow, [
+    "open_interest [$] (D)",
+    "open_interest",
+  ]);
+
+  const oiChange = pickFirst(marketRow, [
+    "oi_change [%] (E)",
+    "oi_change",
+  ]);
+
+  const signal = pickFirst(marketRow, [
+    "signal [Buy/Sell/Hold] (G)",
+    "signal",
+  ]);
+
+  const atrPct = pickFirst(marketRow, [
+    "atr_pct [%] (I)",
+    "atr_pct",
+  ]);
+
+  const volumeSpike = pickFirst(marketRow, [
+    "volume_spike (J)",
+    "volume_spike",
+  ]);
+
+  const marketPressure = pickFirst(marketRow, [
+    "market pressure (K)",
+    "market_pressure",
+  ]);
+
+  const gatekeeper = pickFirst(marketRow, [
+    "gatekeeper (L)",
+    "gatekeeper",
+  ]);
+
+  const newsTimestamp = pickFirst(sentimentRow, [
+    "timestamp (A)",
+    "timestamp",
+  ]);
+
+  const newsCount = pickFirst(sentimentRow, [
+    "news_count (B)",
+    "news_count",
+  ]);
+
+  const newsSentimentScore = pickFirst(sentimentRow, [
+    "news_sentiment_score (C)",
+    "news_sentiment_score",
+  ]);
+
+  const newsSentimentLabel = pickFirst(sentimentRow, [
+    "news_sentiment_label (D)",
+    "news_sentiment_label",
+  ]);
+
+  const headline1 = pickFirst(sentimentRow, [
+    "top_headline_1 (E)",
+    "top_headline_1",
+  ]);
+
+  const headline2 = pickFirst(sentimentRow, [
+    "top_headline_2 (F)",
+    "top_headline_2",
+  ]);
+
+  const headline3 = pickFirst(sentimentRow, [
+    "top_headline_3 (G)",
+    "top_headline_3",
+  ]);
+
+  const fearGreedValue = pickFirst(sentimentRow, [
+    "fear_greed_value (H)",
+    "fear_greed_value",
+  ]);
+
+  const fearGreedLabel = pickFirst(sentimentRow, [
+    "fear_greed_label (I)",
+    "fear_greed_label",
+  ]);
+
+  const marketSentiment = pickFirst(sentimentRow, [
+    "market_sentiment (J)",
+    "market_sentiment",
+  ]);
+
+  return `
+You are analyzing the latest Bitcoin market situation.
+
+Use BOTH:
+1. the structured live market and sentiment data below
+2. your knowledge base and retrieved context from the Flowise chatflow
+
+Live market data from Make / Google Sheets:
+Timestamp: ${timestamp}
+Price: ${price}
+Funding rate: ${funding}
+Open interest: ${openInterest}
+Open interest change: ${oiChange}
+Signal: ${signal}
+ATR volatility (%): ${atrPct}
+Volume spike: ${volumeSpike}
+Market pressure: ${marketPressure}
+Gatekeeper: ${gatekeeper}
+
+Latest sentiment data from Make / Google Sheets:
+Sentiment timestamp: ${newsTimestamp}
+News count: ${newsCount}
+News sentiment score: ${newsSentimentScore}
+News sentiment label: ${newsSentimentLabel}
+Fear & Greed value: ${fearGreedValue}
+Fear & Greed label: ${fearGreedLabel}
+Overall market sentiment: ${marketSentiment}
+Top headline 1: ${headline1}
+Top headline 2: ${headline2}
+Top headline 3: ${headline3}
+
+User question:
+${userMessage}
+
+Instructions:
+- answer in a short professional analytical style
+- combine the live data with your retrieved background knowledge
+- do not give financial advice
+`;
+}
+
+async function callFlowise(question) {
+  const authHeader = Buffer.from(`${FLOWISE_USERNAME}:${FLOWISE_PASSWORD}`).toString("base64");
+
+  const response = await fetch(FLOWISE_API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Basic ${authHeader}`,
+    },
+    body: JSON.stringify({ question }),
+  });
+
+  const text = await response.text();
+
+  if (!response.ok) {
+    throw new Error(`Flowise error ${response.status}: ${text}`);
   }
 
+  let data;
   try {
-    const upstream = await fetch(FLOWISE_ENDPOINT, {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ question: parsed.data.question }),
-    });
-
-    const raw = await upstream.text();
-    let data = null;
-    try {
-      data = JSON.parse(raw);
-    } catch {
-      // keep data as null; do not leak raw upstream text
-    }
-
-    if (!upstream.ok) {
-      // Generic error (no upstream details)
-      return res.status(502).json({ error: "Upstream error" });
-    }
-
-    // Normalize Flowise outputs to one field: `answer`
-    const answer =
-      (data && (data.text ?? data.answer ?? data.result ?? data.output)) ??
-      (typeof data === "string" ? data : "");
-
-    return res.status(200).json({ answer: String(answer || "") });
+    data = JSON.parse(text);
   } catch {
-    return res.status(502).json({ error: "Upstream unavailable" });
+    throw new Error(`Flowise returned non-JSON response: ${text}`);
+  }
+
+  return data;
+}
+
+app.post("/api/chat", async (req, res) => {
+  try {
+    const userMessage = String(req.body?.message || req.body?.question || "").trim();
+
+    if (!userMessage) {
+      return res.status(400).json({ error: "Message is required." });
+    }
+
+    if (userMessage.length > 1000) {
+      return res.status(400).json({ error: "Message too long." });
+    }
+
+    const [marketRow, sentimentRow] = await Promise.all([
+      getLastDataRow("market_data"),
+      getLastDataRow("news_sentiment"),
+    ]);
+
+    const combinedPrompt = buildCombinedPrompt(userMessage, marketRow, sentimentRow);
+    const flowiseData = await callFlowise(combinedPrompt);
+
+    const answer =
+      flowiseData.text ||
+      flowiseData.response ||
+      flowiseData.output ||
+      "";
+
+    return res.status(200).json({
+      text: answer,
+      meta: {
+        marketTimestamp: pickFirst(marketRow, ["timestamp [Datum, Uhrzeit] (A)", "timestamp"]),
+        sentimentTimestamp: pickFirst(sentimentRow, ["timestamp (A)", "timestamp"]),
+      },
+    });
+  } catch (error) {
+    console.error("api/chat error:", error.message);
+    return res.status(500).json({
+      error: "The chat request could not be completed.",
+    });
   }
 });
 
-// Generic error handler (no stack traces to clients)
-app.use((err, req, res, next) => {
-  if (err && err.message === "CORS") return res.status(403).json({ error: "Forbidden" });
-  return res.status(500).json({ error: "Internal error" });
+app.use((req, res) => {
+  res.status(404).json({ error: "Not found." });
 });
 
-const PORT = Number(process.env.PORT || 3000);
 app.listen(PORT, () => {
-  console.log(`Proxy backend listening on :${PORT}`);
+  console.log(`Server listening on port ${PORT}`);
 });
-
