@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
-const fetch = require("node-fetch");
 const { google } = require("googleapis");
 
 const app = express();
