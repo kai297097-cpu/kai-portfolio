@@ -76,14 +76,34 @@ chatForm.addEventListener("submit", async (e) => {
 
     const data = await res.json().catch(() => null);
     if (!res.ok) {
-      throw new Error((data && data.error) || "Request failed");
+      const code = res.status;
+      // Keep errors generic (no upstream details), but helpful for deployment debugging.
+      if (code === 403) throw new Error("forbidden");
+      if (code === 405) throw new Error("method");
+      if (code === 415) throw new Error("media");
+      if (code === 429) throw new Error("rate");
+      throw new Error("request");
     }
 
     const answer =
       (data && (data.answer || data.text || data.result)) || "Ich habe gerade keine Antwort erhalten.";
 
     addMessage({ role: "assistant", text: String(answer) });
-  } catch {
+  } catch (err) {
+    // Most common on GitHub Pages: wrong backend URL or CORS blocked => fetch TypeError
+    if (err && err.name === "TypeError") {
+      setError("Chat ist gerade nicht erreichbar (Backend-URL/CORS prüfen).");
+      return;
+    }
+    const msg = String((err && err.message) || "");
+    if (msg === "forbidden") {
+      setError("Chat ist gesperrt (CORS/Origin im Backend prüfen).");
+      return;
+    }
+    if (msg === "rate") {
+      setError("Zu viele Anfragen – bitte kurz warten und erneut versuchen.");
+      return;
+    }
     setError("Sorry – gerade ist ein Fehler aufgetreten. Bitte versuche es erneut.");
   } finally {
     setBusy(false);

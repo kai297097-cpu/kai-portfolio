@@ -1,6 +1,7 @@
 :root {
   --bg: #0b0f14;
-  --panel: rgba(255, 255, 255, 0.04);
+  --panel: rgba(255, 255, 255, 0.08);
+  --panel-2: rgba(255, 255, 255, 0.06);
   --border: rgba(255, 255, 255, 0.09);
   --text: #e9f0fa;
   --muted: rgba(233, 240, 250, 0.68);
@@ -82,19 +83,26 @@ body {
 }
 
 .card {
-  background: var(--panel);
-  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--panel), rgba(255, 255, 255, 0.035));
+  border: 1px solid rgba(100, 210, 255, 0.16);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
   overflow: hidden;
 }
 
+.chat {
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(167, 139, 250, 0.08),
+    0 0 40px rgba(100, 210, 255, 0.12);
+}
+
 .chat__log {
   height: min(62vh, 560px);
   padding: 18px;
   overflow: auto;
-  background: linear-gradient(180deg, rgba(15, 22, 32, 0.8), rgba(11, 15, 20, 0.8));
+  background: linear-gradient(180deg, rgba(22, 32, 46, 0.78), rgba(11, 15, 20, 0.88));
 }
 
 .msg {
@@ -131,7 +139,7 @@ body {
   padding: 12px 14px;
   border-radius: 14px;
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.05);
   line-height: 1.4;
   white-space: pre-wrap;
   word-break: break-word;
@@ -163,7 +171,7 @@ body {
   gap: 10px;
   padding: 12px 18px 14px;
   border-top: 1px solid var(--border);
-  background: rgba(17, 27, 39, 0.65);
+  background: rgba(17, 27, 39, 0.72);
 }
 
 .chat__input {
@@ -171,7 +179,7 @@ body {
   padding: 12px 12px;
   border-radius: 12px;
   border: 1px solid var(--border);
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--text);
   outline: none;
 }
@@ -194,13 +202,6 @@ body {
 .chat__send:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-.hint {
-  margin: 0;
-  padding: 0 18px 18px;
-  color: var(--muted);
-  font-size: 12px;
 }
 
 @media (max-width: 520px) {
